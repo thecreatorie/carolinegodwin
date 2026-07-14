@@ -51,42 +51,19 @@
     if (track) track.innerHTML += track.innerHTML;
   });
 
-  /* ---------- showreel: lazy YouTube embed ---------- */
-  var shell = document.getElementById("videoShell");
-  if (shell) {
-    var loadVideo = function () {
-      if (shell.dataset.loaded) return;
-      shell.dataset.loaded = "1";
-      var iframe = document.createElement("iframe");
-      iframe.src =
-        "https://www.youtube.com/embed/JYvUHVsZxRo?rel=0&autoplay=1";
-      iframe.title = "Caroline Godwin showreel";
-      iframe.allow =
-        "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
-      iframe.allowFullscreen = true;
-      shell.innerHTML = "";
-      shell.appendChild(iframe);
-    };
-    shell.addEventListener("click", loadVideo);
-    shell.addEventListener("keydown", function (e) {
-      if (e.key === "Enter" || e.key === " ") {
-        e.preventDefault();
-        loadVideo();
-      }
-    });
-  }
-
-  /* ---------- video lightbox (Instagram embeds) ---------- */
+  /* ---------- video lightbox (YouTube) ---------- */
   var lightbox = document.getElementById("lightbox");
   var lightboxFrame = document.getElementById("lightboxFrame");
   var lightboxClose = document.getElementById("lightboxClose");
   if (lightbox) {
-    var openLightbox = function (url) {
+    var openLightbox = function (videoId, ratio) {
       lightboxFrame.innerHTML = "";
+      lightboxFrame.classList.toggle("wide", ratio === "wide");
       var iframe = document.createElement("iframe");
-      iframe.src = url;
-      iframe.title = "Instagram performance video";
-      iframe.allow = "autoplay; encrypted-media; picture-in-picture";
+      iframe.src = "https://www.youtube.com/embed/" + videoId + "?rel=0&autoplay=1";
+      iframe.title = "Performance video";
+      iframe.allow =
+        "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
       iframe.allowFullscreen = true;
       lightboxFrame.appendChild(iframe);
       lightbox.classList.add("open");
@@ -99,10 +76,16 @@
       lightboxFrame.innerHTML = "";
       document.body.style.overflow = "";
     };
-    document.querySelectorAll("[data-embed]").forEach(function (el) {
-      el.addEventListener("click", function () { openLightbox(el.dataset.embed); });
+    document.querySelectorAll("[data-video]").forEach(function (el) {
+      el.addEventListener("click", function (e) {
+        e.preventDefault();
+        openLightbox(el.dataset.video, el.dataset.ratio || "wide");
+      });
       el.addEventListener("keydown", function (e) {
-        if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openLightbox(el.dataset.embed); }
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          openLightbox(el.dataset.video, el.dataset.ratio || "wide");
+        }
       });
     });
     lightboxClose.addEventListener("click", closeLightbox);
