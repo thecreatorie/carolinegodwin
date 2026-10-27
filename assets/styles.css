@@ -953,6 +953,8 @@ footer {
   .act-card:nth-child(even) { transform: translateY(2rem); }
   .disc-grid { grid-template-columns: repeat(2, 1fr); }
   .gal-grid { grid-template-columns: repeat(3, 1fr); grid-auto-rows: 190px; }
+  .gal-wide { grid-column: span 3; }
+  .gal-wide-md { grid-column: span 2; }
   .hero-side { display: none; }
 }
 
@@ -976,6 +978,8 @@ footer {
   .class-grid { grid-template-columns: 1fr; }
   .skill-years { grid-template-columns: repeat(2, 1fr); }
   .gal-grid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 165px; }
+  .gal-wide { grid-column: span 2; }
+  .gal-wide-md { grid-column: auto; }
   .hero-stats { gap: 1.6rem 2.2rem; }
   .act-card:nth-child(even) { transform: none; }
   .ghost::before { font-size: 7rem; top: 2.5rem; }
