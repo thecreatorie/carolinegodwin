@@ -594,6 +594,16 @@ body::after {
 }
 .vid-card:hover figcaption { color: var(--ivory); }
 .vid-play { color: var(--scarlet); padding-right: .5rem; font-size: .58rem; }
+.vid-heading {
+  margin-top: 4.2rem;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: .8rem;
+  letter-spacing: .5em;
+  text-transform: uppercase;
+  color: var(--mist);
+}
+.vid-heading + .video-grid { margin-top: 1.6rem; }
 
 .tl-watch {
   display: inline-block;
