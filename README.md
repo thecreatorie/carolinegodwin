@@ -7,7 +7,11 @@ no subscriptions. Made to run free forever on GitHub Pages.
 ## What's inside
 
 ```
-index.html          — the whole site (single page)
+index.html          — home page
+aerial.html, fire-dancing.html, led-prop-dance.html, stiltwalking.html,
+daytime-performances.html, costume-design.html, teaching.html,
+equipment-rentals.html, aerial-rigging.html
+                    — one page per skill (linked from the home page Skills section)
 assets/styles.css   — fire & gold theme
 assets/script.js    — ember particles, scroll reveals, lazy showreel
 assets/img/         — optimized performance photos
